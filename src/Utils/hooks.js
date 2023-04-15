@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { COLORS, FONT_COLORS } from "../Theme/Colors";
 import { themeContext } from "./Context/ThemeContext";
 import { userContext } from "./Context/UserContext";
+import { fileContext } from "./Context/FileContext";
 
 export const useTheme = () => {
   let [theme, changeTheme] = useContext(themeContext);

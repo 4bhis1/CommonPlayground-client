@@ -29,3 +29,13 @@ export const useUser = () => {
 
   return { user, logout };
 };
+
+export const useFileSystem = () => {
+  const { fileSystem } = useContext(fileContext);
+
+  const createFile = ({ path }) => {};
+  const renameFile = () => {};
+  const deletFile = () => {};
+
+  return { fileSystem, createFile, renameFile, deletFile };
+};

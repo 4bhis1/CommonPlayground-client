@@ -1,14 +1,34 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 
 export const fileContext = createContext();
 
 export const FileContext = ({ children }) => {
-  let [theme, toggleTheme] = useState(
-    window.localStorage.getItem("theme") || "dark"
-  );
+  const fileSystem = [
+    {
+      name: "Common Playground",
+      type: "folder",
+      child: [
+        {
+          name: "text",
+          type: "txt",
+          content: [],
+        },
+        {
+          name: "apple",
+          type: "js",
+          content: [],
+        },
+      ],
+    },
+    {
+      name: "BHi Playground",
+      type: "folder",
+      child: [],
+    },
+  ];
 
   return (
-    <fileContext.Provider value={[theme, toggleTheme]}>
+    <fileContext.Provider value={{ fileSystem }}>
       {children}
     </fileContext.Provider>
   );

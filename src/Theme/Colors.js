@@ -24,6 +24,8 @@ export const COLORS = {
     // SURFACE: "#D0F0FF",
     SURFACE1: "#F5F5F5",
     SURFACE2: "#E0E0E0",
+
+    MODAL_COLOR: "#00000066",
   },
   DARK: {
     YELLOW_HIGH: "#FFEE58",
@@ -50,6 +52,8 @@ export const COLORS = {
     // SURFACE: "#6495ED",
     SURFACE1: "#333333",
     SURFACE2: "#757575",
+
+    MODAL_COLOR: "#FFFFFF40",
   },
 };
 

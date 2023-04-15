@@ -1,7 +1,7 @@
-import React from "react";
-import View from "./View";
+import React, { memo } from "react";
 
 import { GrFormClose } from "react-icons/gr";
+import View from "../View";
 
 const Modal = ({
   children,
@@ -21,7 +21,7 @@ const Modal = ({
         right: 0,
         top: 0,
         bottom: 0,
-        bgColor: "darkBlueOpacity2",
+        bgColor: "MODAL_COLOR",
         justifyContent: "center",
         alignItems: "center",
         zIndex: 2,
@@ -36,8 +36,9 @@ const Modal = ({
             flexDirection: "column",
             opacity: "1.0",
             bgColor: "ghostWhite",
-            padding: 2,
-            borderRadius: 10,
+            paddingHorizontal: 10,
+            paddingVertical: 5,
+            borderRadius: 5,
             ...(showOnCenter
               ? {}
               : {
@@ -45,19 +46,23 @@ const Modal = ({
                   left: parentRefrence.x + parentRefrence.width,
                   top: parentRefrence.y + parentRefrence.height,
                 }),
-            boxShadow: "0px 0px 26px 1px white",
+            // boxShadow: "0px 0px 26px 1px white",
           }}
           onClick={(e) => {
             e.stopPropagation();
           }}
         >
-          <View>
-            <View style={{ flex: 1, margin: 5 }}>{heading}</View>
+          {heading ? (
+            <View>
+              <View style={{ flex: 1, margin: 5 }}>{heading}</View>
 
-            <View style={{ cursor: "pointer", padding: 5 }} onClick={onClose}>
-              <GrFormClose />
+              <View style={{ cursor: "pointer", padding: 5 }} onClick={onClose}>
+                <GrFormClose />
+              </View>
             </View>
-          </View>
+          ) : (
+            void 0
+          )}
           <View>{children}</View>
         </View>
       ) : (
@@ -118,4 +123,4 @@ const Modal = ({
   );
 };
 
-export default Modal;
+export default memo(Modal);

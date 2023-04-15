@@ -9,7 +9,7 @@ const MultiCursor = ({ socket }) => {
   const [, , { colors, fontColor }] = useTheme();
   const { FONT1 } = fontColor;
   const { SURFACE1 } = colors;
-  
+
   // useEffect(() => {
   //   // socket.on("recieveCode", (data) => {
   //     updateCursorAtIndex((index) => {
@@ -43,23 +43,23 @@ const MultiCursor = ({ socket }) => {
 
   let refrence = useRef(null);
   useEffect(() => {
-    let isCancelled = false;
+    // let isCancelled = false;
 
     refrence.current.style.height = "0px";
     const scrollHeight = refrence.current.scrollHeight;
     refrence.current.style.height = scrollHeight + "px";
 
-    const fetchData = async () => {
-      console.log("text", text);
-      // // socket.emit("update_code", text);
-    };
+    // const fetchData = async () => {
+    //   console.log("text", text);
+    //   // // socket.emit("update_code", text);
+    // };
 
-    const interval = setInterval(fetchData, 3000);
+    // const interval = setInterval(fetchData, 3000);
 
-    return () => {
-      isCancelled = true;
-      clearInterval(interval);
-    };
+    // return () => {
+    //   isCancelled = true;
+    //   // clearInterval(interval);
+    // };
   }, [text]);
 
   return (

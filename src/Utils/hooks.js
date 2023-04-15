@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { COLORS, FONT_COLORS } from "../Theme/Colors";
 import { themeContext } from "./Context/ThemeContext";
 import { userContext } from "./Context/UserContext";
+import { fileContext } from "./Context/FileContext";
 
 export const useTheme = () => {
   let [theme, changeTheme] = useContext(themeContext);
@@ -28,4 +29,14 @@ export const useUser = () => {
   };
 
   return { user, logout };
+};
+
+export const useFileSystem = () => {
+  const { fileSystem } = useContext(fileContext);
+
+  const createFile = ({ path }) => {};
+  const renameFile = () => {};
+  const deletFile = () => {};
+
+  return { fileSystem, createFile, renameFile, deletFile };
 };

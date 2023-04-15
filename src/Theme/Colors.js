@@ -30,7 +30,7 @@ export const COLORS = {
   DARK: {
     YELLOW_HIGH: "#FFEE58",
     YELLOW_MEDIUM: "#FFF176",
-    YELLOW_LOW: "##FFF9C4",
+    YELLOW_LOW: "#FFF9C4",
 
     BLUE_HIGH: "#2196F3",
     BLUE_MEDIUM: "#90CAF9",

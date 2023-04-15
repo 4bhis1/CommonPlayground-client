@@ -33,19 +33,6 @@ const ShowFileName = memo(
 
     let refOfThreeDots = useRef(null);
 
-    useEffect(() => {
-      const handleKeyDown = (event) => {
-        if (event.key === "Escape") {
-          updateShowModalClick(false);
-        }
-      };
-      window.addEventListener("keydown", handleKeyDown);
-
-      return () => {
-        window.removeEventListener("keydown", handleKeyDown);
-      };
-    }, [showModalClick]);
-
     return (
       <>
         {showModalClick && (
@@ -128,16 +115,15 @@ const FileArchitecture = ({ data }) => {
       {data.map((props) => {
         const { type, child } = props;
         let actionsOfOptions = [
-          { name: "rename", onAction: () => {} },
-          { name: "delete", onAction: () => {} },
+          { name: "Rename", onAction: () => {} },
+          { name: "Delete", onAction: () => {} },
         ];
         if (type === "folder") {
-          actionsOfOptions.push(
-            ...[
-              { name: "create folder", onAction: () => {} },
-              { name: "create file", onAction: () => {} },
-            ]
-          );
+          actionsOfOptions = [
+            { name: "Create folder", onAction: () => {} },
+            { name: "Create file", onAction: () => {} },
+            ...actionsOfOptions,
+          ];
         }
 
         return (

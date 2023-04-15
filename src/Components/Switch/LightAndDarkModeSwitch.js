@@ -41,7 +41,7 @@ const LightAndDarkModeSwitch = ({ backgroundColor, onClick }) => {
         <View
           style={{
             borderRadius: "100%",
-            backgroundColor: darkMode ? "white" : "yellow",
+            bgColor: darkMode ? "white" : "yellow",
             transition: "linear 0.2s",
             ...(darkMode
               ? { transform: "translateX(-5px)" }

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 
 import { GrFormClose } from "react-icons/gr";
 import View from "../View";
@@ -12,6 +12,19 @@ const Modal = ({
   heading,
 }) => {
   const parentRefrence = parentRef?.current?.getBoundingClientRect();
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
 
   return (
     <View

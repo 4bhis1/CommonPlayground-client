@@ -49,7 +49,6 @@ const Modal = ({
             flexDirection: "column",
             opacity: "1.0",
             bgColor: "ghostWhite",
-            paddingHorizontal: 10,
             paddingVertical: 5,
             borderRadius: 5,
             ...(showOnCenter

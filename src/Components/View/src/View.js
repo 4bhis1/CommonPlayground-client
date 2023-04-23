@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTheme } from "../../../Utils/hooks";
 
-const View = ({ style, children, reference, ...props }) => {
+const View = ({
+  style: styles,
+  children,
+  reference,
+  hoverStyle = {},
+  ...props
+}) => {
   let [, , { colors, fontColor: FontColor }] = useTheme();
+  let [onHover, updateOnHover] = useState(false);
+
+  let style = { ...styles };
+
+  if (onHover) {
+    style = { ...style, ...hoverStyle };
+  }
 
   let tempStyle = { ...style };
 
@@ -46,6 +59,12 @@ const View = ({ style, children, reference, ...props }) => {
         color: fontColor,
         borderColor: tempBorderColor,
         ...tempStyle,
+      }}
+      onMouseEnter={() => {
+        hoverStyle && updateOnHover(true);
+      }}
+      onMouseLeave={() => {
+        hoverStyle && updateOnHover(false);
       }}
       ref={reference}
       {...props}

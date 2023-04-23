@@ -60,8 +60,10 @@ export const COLORS = {
 export const FONT_COLORS = {
   LIGHT: {
     FONT1: "#1A1A1A",
+    FONT2: "#F2F2F2",
   },
   DARK: {
     FONT1: "#F2F2F2",
+    FONT2: "#1A1A1A",
   },
 };

@@ -28,7 +28,6 @@ const ShowFileName = memo(
     type,
     showInnerFile,
   }) => {
-    let [hoverOfOptions, updateHoverOfOptions] = useState(false);
     let [showModalClick, updateShowModalClick] = useState(false);
 
     let refOfThreeDots = useRef(null);
@@ -45,9 +44,17 @@ const ShowFileName = memo(
             <View style={{ flexDirection: "column" }}>
               {actionsOfOptions.map((value, index) => (
                 <View
-                  onClick={value.onAction}
+                  onClick={() => {
+                    value.onAction();
+                    updateShowModalClick(false);
+                  }}
                   key={index}
-                  style={{ cursor: "pointer" }}
+                  style={{
+                    cursor: "pointer",
+                    paddingHorizontal: 10,
+                    color: "FONT2",
+                  }}
+                  hoverStyle={{ bgColor: "SURFACE1", color: "FONT1" }}
                 >
                   {value.name}
                 </View>
@@ -70,7 +77,7 @@ const ShowFileName = memo(
                 updateShowInnerFile((show) => !show);
               }}
             >
-              {showInnerFile ? <FaChevronRight /> : <FaChevronDown />}
+              {!showInnerFile ? <FaChevronRight /> : <FaChevronDown />}
             </View>
           ) : (
             <View style={{ width: 10 }} />
@@ -86,17 +93,11 @@ const ShowFileName = memo(
           <View style={{ flex: 1, color: "FONT1" }}>{name}</View>
           <View
             reference={refOfThreeDots}
-            onMouseEnter={() => {
-              updateHoverOfOptions(true);
-            }}
-            onMouseLeave={() => {
-              updateHoverOfOptions(false);
-            }}
             onClick={() => {
               updateShowModalClick(true);
             }}
-            style={{
-              color: hoverOfOptions ? "FONT1" : "BACKGROUND_BLACK_LOW",
+            hoverStyle={{
+              color: "FONT1",
             }}
           >
             <BsThreeDotsVertical />

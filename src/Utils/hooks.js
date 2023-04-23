@@ -32,11 +32,32 @@ export const useUser = () => {
 };
 
 export const useFileSystem = () => {
-  const { fileSystem } = useContext(fileContext);
+  const { fileSystem, updateFileSystem } = useContext(fileContext);
 
-  const createFile = ({ path }) => {};
+  let addFile = (path, fileToWrite) => {
+    let count = 0;
+    let actFile = null;
+    let tempFunc = (files) => {
+      if (count === path.length) return files;
+
+      for (let file of files) {
+        if (file.name === path[count]) {
+          count++;
+          actFile = tempFunc(file.children);
+        }
+      }
+
+      return actFile;
+    };
+
+    let files = tempFunc(fileSystem);
+    files.push(fileToWrite);
+
+    updateFileSystem(files);
+  };
+
   const renameFile = () => {};
-  const deletFile = () => {};
+  const deleteFile = () => {};
 
-  return { fileSystem, createFile, renameFile, deletFile };
+  return { fileSystem, addFile, renameFile, deleteFile, updateFileSystem };
 };
